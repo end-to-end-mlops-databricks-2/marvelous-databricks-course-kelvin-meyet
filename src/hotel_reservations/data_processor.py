@@ -11,9 +11,7 @@ from hotel_reservations.config import ProjectConfig
 class DataProcessor:
     """Data processing class."""
 
-    def __init__(
-        self, pandas_df: pd.DataFrame, config: ProjectConfig, spark: SparkSession
-    ):
+    def __init__(self, pandas_df: pd.DataFrame, config: ProjectConfig, spark: SparkSession):
         self.df = pandas_df
         self.config = config
         self.spark = spark
@@ -32,9 +30,7 @@ class DataProcessor:
     def split_data(self, test_size: int = 0.2, random_state=0, **kwargs):
         """Split the data into train and test sets."""
 
-        return train_test_split(
-            self.df, test_size=test_size, random_state=random_state, **kwargs
-        )
+        return train_test_split(self.df, test_size=test_size, random_state=random_state, **kwargs)
 
     def save_to_catalog(self, table_config: dict[str, pd.DataFrame]):
         """Save df into Databricks tables.
